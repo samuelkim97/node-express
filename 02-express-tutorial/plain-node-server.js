@@ -1,5 +1,4 @@
 const http = require("http");
-const { url } = require("inspector");
 const { readFileSync } = require("fs");
 
 const homePage = readFileSync("./navbar-app/index.html");
