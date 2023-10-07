@@ -1,11 +1,13 @@
 const express = require("express");
 const app = express();
 const logger = require("./logger");
+const authorize = require("./authorize");
 // req => middleware => res
 
 // middleware
 // apply to all
-app.use(logger);
+// order matters
+app.use([logger, authorize]);
 
 app.get("/", (req, res) => {
 	res.send("home");
@@ -18,6 +20,7 @@ app.get("/api/products", (req, res) => {
 	res.send("products");
 });
 app.get("/api/items", (req, res) => {
+	console.log(req.user);
 	res.send("items");
 });
 
